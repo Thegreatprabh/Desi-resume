@@ -28,12 +28,12 @@ Paid resume builders charge you to download **your own** resume — usually with
 ### 📸 Screenshots
 
 <p align="center">
-  <img src="screenshots/editor.jpg" alt="Desi Resume editor" width="700" />
+  <img src="screenshots/editor.svg" alt="Desi Resume editor" width="700" />
   <br><sub>Fill the form — live preview + ATS checklist update instantly</sub>
 </p>
 
 <p align="center">
-  <img src="screenshots/resume.jpg" alt="Generated ATS-friendly resume" width="700" />
+  <img src="screenshots/resume.svg" alt="Generated ATS-friendly resume" width="700" />
   <br><sub>Clean single-column resume that ATS software actually parses</sub>
 </p>
 
