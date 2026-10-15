@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Desi Resume — Free ATS-Friendly Resume Builder</title>
+<meta name="description" content="Free resume builder for Indian students & job seekers. ATS-friendly single-column layouts, no watermark, no signup. Your data never leaves the browser." />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header class="app-header no-print">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-mark">📄</span>
+      <div>
+        <h1>Desi Resume</h1>
+        <p class="tagline">Free ATS-friendly resumes. No watermark. No signup.</p>
+      </div>
+    </div>
+    <nav class="header-actions">
+      <button id="btn-new" class="btn btn-primary">+ New Resume</button>
+      <button id="btn-print" class="btn btn-ghost">🖨️ Print / PDF</button>
+    </nav>
+  </div>
+</header>
+
+<main class="layout no-print">
+  <section class="editor">
+    <div class="card">
+      <h2>Personal Details</h2>
+      <div class="grid-2">
+        <label>Full name *<input id="p-name" placeholder="Prabhjot Singh" /></label>
+        <label>Professional title<input id="p-title" placeholder="BBA FinTech & AI Student" /></label>
+      </div>
+      <div class="grid-3">
+        <label>Email *<input id="p-email" type="email" placeholder="you@email.com" /></label>
+        <label>Phone *<input id="p-phone" placeholder="+91 98765 43210" /></label>
+        <label>Location<input id="p-location" placeholder="Chandigarh, India" /></label>
+      </div>
+      <div class="grid-3">
+        <label>LinkedIn<input id="p-linkedin" placeholder="linkedin.com/in/username" /></label>
+        <label>GitHub<input id="p-github" placeholder="github.com/username" /></label>
+        <label>Portfolio<input id="p-portfolio" placeholder="yourwebsite.com" /></label>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Professional Summary</h2>
+      <label>2–4 lines about you<textarea id="p-summary" rows="4" placeholder="Motivated BBA FinTech & AI student who builds real projects..."></textarea></label>
+      <small class="hint">Tip: mention years/skills/goal. Recruiters read this first.</small>
+    </div>
+
+    <div class="card">
+      <h2>Experience</h2>
+      <div id="exp-list"></div>
+      <button class="btn btn-ghost" data-add="exp">+ Add experience</button>
+    </div>
+
+    <div class="card">
+      <h2>Projects</h2>
+      <div id="proj-list"></div>
+      <button class="btn btn-ghost" data-add="proj">+ Add project</button>
+    </div>
+
+    <div class="card">
+      <h2>Education</h2>
+      <div id="edu-list"></div>
+      <button class="btn btn-ghost" data-add="edu">+ Add education</button>
+    </div>
+
+    <div class="card">
+      <h2>Skills</h2>
+      <label>Comma-separated<input id="p-skills" placeholder="Python, Excel, Financial Modeling, Communication" /></label>
+      <div class="card">
+        <h2 style="margin-top:0">Certifications <span class="muted">(optional)</span></h2>
+        <div id="cert-list"></div>
+        <button class="btn btn-ghost" data-add="cert">+ Add certification</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Style</h2>
+      <label>Accent color</label>
+      <div class="swatches" id="swatches">
+        <button class="swatch" data-color="#1a56db" style="background:#1a56db" title="Classic Blue"></button>
+        <button class="swatch" data-color="#0a7a4d" style="background:#0a7a4d" title="Forest Green"></button>
+        <button class="swatch" data-color="#7c3aed" style="background:#7c3aed" title="Royal Purple"></button>
+        <button class="swatch" data-color="#b45309" style="background:#b45309" title="Amber"></button>
+        <button class="swatch" data-color="#111111" style="background:#111111" title="Mono Black"></button>
+      </div>
+      <label style="margin-top:14px">Font style</label>
+      <div class="font-pills" id="font-pills">
+        <button class="font-pill active" data-font="classic">Classic Serif</button>
+        <button class="font-pill" data-font="modern">Modern Sans</button>
+        <button class="font-pill" data-font="elegant">Elegant</button>
+        <button class="font-pill" data-font="compact">Compact</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Watermark</h2>
+      <div class="grid-2">
+        <label>Watermark image<input id="wm-file" type="file" accept="image/*" /><small class="hint">Logo ya monogram — device pe hi rehta hai</small></label>
+        <label>Transparency <span id="wm-opacity-val" class="muted">12%</span><input id="wm-opacity" type="range" min="4" max="30" value="12" /></label>
+      </div>
+      <label class="check-row"><input type="checkbox" id="wm-enabled" /> Show watermark behind resume</label>
+      <div class="editor-actions">
+        <button id="btn-wm-clear" class="btn btn-ghost btn-small">Remove watermark</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>✨ Smart Autofill</h2>
+      <p class="muted">Apna LinkedIn About, bio, ya koi bhi plain-text description paste kar — ye naam, email, phone, links aur skills nikaal ke form bhar dega. Koi server nahi, sab browser me.</p>
+      <label>Paste your text<textarea id="autofill-text" rows="5" placeholder="Prabhjot Singh&#10;BBA FinTech & AI student at Chandigarh University..."></textarea></label>
+      <div class="editor-actions">
+        <button id="btn-autofill" class="btn btn-primary">✨ Auto-fill my resume</button>
+      </div>
+      <p class="hint" id="autofill-result"></p>
+    </div>
+
+    <div class="card ats-card">
+      <h2>🤖 ATS Check — live</h2>
+      <p class="muted">Applicant Tracking Systems reject ~75% of resumes before a human sees them. This checks yours in real time.</p>
+      <ul id="ats-list" class="ats-list"></ul>
+    </div>
+  </section>
+
+  <section id="preview-section" aria-label="Resume preview">
+    <div class="preview-toolbar no-print">
+      <h2>Live Preview</h2>
+      <p class="muted">Exactly what prints / saves as PDF. Single column = ATS-safe.</p>
+    </div>
+    <div id="resume-preview" class="resume-sheet"></div>
+  </section>
+</main>
+
+<div id="print-area" class="print-only"></div>
+
+<footer class="app-footer no-print">
+  <p>Desi Resume is free & open source (MIT). Your data never leaves this browser. 🇮🇳</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
